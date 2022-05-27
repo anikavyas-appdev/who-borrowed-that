@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Borrower #<%= @the_borrower.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/borrowers">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_borrower/<%= @the_borrower.id %>">
+          Delete borrower
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_borrower.name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_borrower.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_borrower.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit borrower
+    </h2>
+
+    <form action="/modify_borrower/<%= @the_borrower.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_borrower.name %>">
+      </div>
+
+      <button>
+        Update borrower
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
