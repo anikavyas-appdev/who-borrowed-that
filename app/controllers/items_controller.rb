@@ -1,4 +1,9 @@
 class ItemsController < ApplicationController
+
+  def home 
+    redirect_to("/items")
+  end
+
   def index
     matching_items = Item.all
 
@@ -22,9 +27,11 @@ class ItemsController < ApplicationController
     user_id = session.fetch(:user_id)
     the_item.description = params.fetch("query_description")
     # the_item.category_id = params.fetch("query_category_id")
+
     category_name = params.fetch("query_category_name")
     category = Category.where({ :category => category_name}).at(0)
-    if category.valid?
+
+    if category != nil
       the_item.category_id = category.id
     else 
       new_category = Category.new
@@ -35,16 +42,16 @@ class ItemsController < ApplicationController
 
     the_item.image_link = params.fetch("query_image_link")
     the_item.owner_id = user_id
-    # the_item.borrower_id = params.fetch("query_borrower_id")
-    borrower_name = params.fetch("query_borrower_id")
+    # the_item.borrower_id = params.fetch("query_borrower_name")
+    borrower_name = params.fetch("query_borrower_name")
     matching_borrower = Borrower.where({ :name => borrower_name}).at(0)
-    if matching_borrower.valid?
+    if matching_borrower != nil
       the_item.borrower_id = matching_borrower.id
     else 
-      new_category = Category.new
-      new_category.category = category_name
-      new_category.save
-      the_item.category_id = new_category.id
+      new_borrower = Borrower.new
+      new_borrower.category = borrower_name
+      new_borrower.save
+      the_item.borrower_id = new_borrower.id
     end
 
     if the_item.valid?
@@ -63,7 +70,7 @@ class ItemsController < ApplicationController
     # the_item.category_id = params.fetch("query_category_id")
     category_name = params.fetch("query_category_name")
     updated_category = Category.where({ :category => category_name}).at(0)
-    if updated_category.valid?
+    if updated_category != nil
       the_item.category_id = updated_category.id
     else 
       new_category = Category.new
@@ -73,7 +80,17 @@ class ItemsController < ApplicationController
     end
     the_item.image_link = params.fetch("query_image_link")
     the_item.owner_id = the_item.owner.name
-    the_item.borrower_id = params.fetch("query_borrower_id")
+    # the_item.borrower_id = params.fetch("query_borrower_name")
+    borrower_name = params.fetch("query_borrower_name")
+    matching_borrower = Borrower.where({ :name => borrower_name}).at(0)
+    if matching_borrower != nil
+      the_item.borrower_id = matching_borrower.id
+    else 
+      new_borrower = Borrower.new
+      new_borrower.category = borrower_name
+      new_borrower.save
+      the_item.borrower_id = new_borrower.id
+    end
 
     if the_item.valid?
       the_item.save

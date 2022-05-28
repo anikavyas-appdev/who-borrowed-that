@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get("/", { :controller => "items", :action => "home"})
 
   # Routes for the Borrower resource:
 

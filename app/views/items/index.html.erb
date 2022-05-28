@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all items
+      List of all borrowed items
     </h1>
   </div>
 </div>
@@ -44,7 +44,7 @@
           Borrower
         </label>
 
-        <input type="text" id="borrower_id_box" name="query_borrower_id">
+        <input type="text" id="borrower_id_box" name="query_borrower_name">
       </div>
 
       <button>
@@ -80,6 +80,10 @@
         </th>
 
         <th>
+          Returned?
+        </th>
+
+        <th>
         </th>
       </tr>
 
@@ -105,6 +109,12 @@
 
         <td>
           <%= an_item.borrower.name %>
+        </td>
+
+        <td>
+          <a href="/delete_item/<%= an_item.id %>">
+            Item has been returned
+          </a>
         </td>
 
         <td>
