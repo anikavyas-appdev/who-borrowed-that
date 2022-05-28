@@ -40,16 +40,12 @@
         </th>
 
         <th>
-          Name
+          Borrower's Name
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
+          Number of borrowed clothes
+        </th>        
 
         <th>
         </th>
@@ -66,10 +62,7 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(a_borrower.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_borrower.updated_at) %> ago
+            <%= a_borrower.items.count %> borrowed clothes
         </td>
 
         <td>

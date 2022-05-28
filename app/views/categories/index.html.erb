@@ -44,12 +44,8 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
+          Number of borrowed clothes
+        </th>   
 
         <th>
         </th>
@@ -66,10 +62,7 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(a_category.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_category.updated_at) %> ago
+          <%= a_category.items.count %> clothes borrowed
         </td>
 
         <td>

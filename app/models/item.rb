@@ -12,4 +12,7 @@
 #  owner_id    :integer
 #
 class Item < ApplicationRecord
+  belongs_to(:owner, { :required => true, :class_name => "User", :foreign_key => "owner_id" })
+  belongs_to(:category, { :required => true, :class_name => "Category", :foreign_key => "category_id" })
+  belongs_to(:borrower, { :required => true, :class_name => "Borrower", :foreign_key => "borrower_id" })
 end

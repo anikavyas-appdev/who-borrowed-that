@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Borrower < ApplicationRecord
+  has_many(:items, { :class_name => "Item", :foreign_key => "borrower_id", :dependent => :destroy })
 end

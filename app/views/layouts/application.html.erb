@@ -16,6 +16,7 @@
   </head>
 
   <body>
+    <h1> <a href="/items"> Where Are My Clothes? </a></h1>
     <ul>
         <% if session.fetch(:user_id) == nil%>
         <li><a href="/user_sign_up">Sign up</a></li>
@@ -23,6 +24,11 @@
       <% else %>
         <li><a href="/user_sign_out">Sign out</a></li>  
       <% end %>
+        <li> <a href="/borrowers"> List of borrowers </a></li>
+        <li> <a href="/items"> Add borrowed item </a></li>
+        <li> <a href="/categories"> Categories of clothing </a></li>
+
+
     </ul>
     <%= yield %>
   </body>

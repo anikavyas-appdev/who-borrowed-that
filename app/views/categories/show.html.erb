@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Category #<%= @the_category.id %> details
+      <%= @the_category.category %> borrowed
     </h1>
 
     <div>
@@ -18,28 +18,70 @@
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Category
-      </dt>
-      <dd>
-        <%= @the_category.category %>
-      </dd>
+  <div>
+    <div>
+      <table border="1">
+        <tr>
+          <th>
+            ID
+          </th>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_category.created_at) %> ago
-      </dd>
+          <th>
+            Description
+          </th>
 
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_category.updated_at) %> ago
-      </dd>
-    </dl>
+          <th>
+            Image
+          </th>
+
+          <th>
+            Borrower
+          </th>
+
+          <th>
+            Returned?
+          </th>
+
+          <th>
+          </th>
+        </tr>
+
+        <% @the_category.items.each do |an_item| %>
+        <tr>
+          <td>
+            <%= an_item.id %>
+          </td>
+
+          <td>
+            <%= an_item.description %>
+          </td>
+
+          <td>
+            <img src="<%= an_item.image_link %>" 
+            width="300" 
+            height=auto>
+          </td>
+
+          <td>
+            <%= an_item.borrower.name %>
+          </td>
+
+          <td>
+            <a href="/delete_item/<%= an_item.id %>">
+              Item has been returned
+            </a>
+          </td>
+
+          <td>
+            <a href="/items/<%= an_item.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
   </div>
 </div>
 
