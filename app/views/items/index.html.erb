@@ -16,11 +16,11 @@
 
     <form action="/insert_item" method="post">
       <div>
-        <label for="description_box">
+        <label for="description_box" >
           Description
         </label>
 
-        <input type="text" id="description_box" name="query_description">
+        <input type="text" id="description_box" name="query_description" required>
       </div>
 
       <div>
@@ -28,7 +28,7 @@
           Category
         </label>
 
-        <input type="text" id="category_id_box" name="query_category_name">
+        <input type="text" id="category_id_box" name="query_category_name" required>
       </div>
 
       <div>
@@ -36,7 +36,7 @@
           Image link
         </label>
 
-        <input type="text" id="image_link_box" name="query_image_link">
+        <input type="text" id="image_link_box" name="query_image_link" required>
       </div>
 
       <div>
@@ -44,7 +44,7 @@
           Borrower
         </label>
 
-        <input type="text" id="borrower_id_box" name="query_borrower_name">
+        <input type="text" id="borrower_id_box" name="query_borrower_name" required>
       </div>
 
       <button>

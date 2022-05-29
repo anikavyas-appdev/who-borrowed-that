@@ -29,9 +29,10 @@ class ItemsController < ApplicationController
     # the_item.category_id = params.fetch("query_category_id")
 
     category_name = params.fetch("query_category_name")
-    category = Category.where({ :category => category_name}).at(0)
+    category = Category.where({ :category => category_name})
 
-    if category != nil
+    if category.count != 0
+      category = category.at(0)
       the_item.category_id = category.id
     else 
       new_category = Category.new
@@ -44,12 +45,13 @@ class ItemsController < ApplicationController
     the_item.owner_id = user_id
     # the_item.borrower_id = params.fetch("query_borrower_name")
     borrower_name = params.fetch("query_borrower_name")
-    matching_borrower = Borrower.where({ :name => borrower_name}).at(0)
-    if matching_borrower != nil
+    matching_borrower = Borrower.where({ :name => borrower_name})
+    if matching_borrower.count != 0
+      matching_borrower = matching_borrower.at(0)
       the_item.borrower_id = matching_borrower.id
     else 
       new_borrower = Borrower.new
-      new_borrower.category = borrower_name
+      new_borrower.name = borrower_name
       new_borrower.save
       the_item.borrower_id = new_borrower.id
     end
@@ -69,8 +71,9 @@ class ItemsController < ApplicationController
     the_item.description = params.fetch("query_description")
     # the_item.category_id = params.fetch("query_category_id")
     category_name = params.fetch("query_category_name")
-    updated_category = Category.where({ :category => category_name}).at(0)
-    if updated_category != nil
+    updated_category = Category.where({ :category => category_name})
+    if updated_category.count != 0
+      updated_category = updated_category.at(0)
       the_item.category_id = updated_category.id
     else 
       new_category = Category.new
@@ -79,11 +82,11 @@ class ItemsController < ApplicationController
       the_item.category_id = new_category.id
     end
     the_item.image_link = params.fetch("query_image_link")
-    the_item.owner_id = the_item.owner.name
     # the_item.borrower_id = params.fetch("query_borrower_name")
     borrower_name = params.fetch("query_borrower_name")
-    matching_borrower = Borrower.where({ :name => borrower_name}).at(0)
-    if matching_borrower != nil
+    matching_borrower = Borrower.where({ :name => borrower_name})
+    if matching_borrower.count != 0
+      matching_borrower = matching_borrower.at(0)
       the_item.borrower_id = matching_borrower.id
     else 
       new_borrower = Borrower.new

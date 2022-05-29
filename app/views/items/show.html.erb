@@ -57,7 +57,7 @@
           Description
         </label>
 
-        <input type="text" id="description_box" name="query_description" value="<%= @the_item.description %>">
+        <input type="text" id="description_box" name="query_description" value="<%= @the_item.description %>" required>
       </div>
 
       <div>
@@ -65,7 +65,7 @@
           Category
         </label>
 
-        <input type="text" id="category_name_box" name="query_category_name" value="<%= @the_item.category.category %>">
+        <input type="text" id="category_name_box" name="query_category_name" value="<%= @the_item.category.category %>" required>
       </div>
 
       <div>
@@ -73,7 +73,7 @@
           Image link
         </label>
 
-        <input type="text" id="image_link_box" name="query_image_link" value="<%= @the_item.image_link %>">
+        <input type="text" id="image_link_box" name="query_image_link" value="<%= @the_item.image_link %>" required>
       </div>
 
       <div>
@@ -81,7 +81,7 @@
           Borrower
         </label>
 
-        <input type="text" id="borrower_id_box" name="query_borrower_name" value="<%= @the_item.borrower.name %>">
+        <input type="text" id="borrower_id_box" name="query_borrower_name" value="<%= @the_item.borrower.name %>" required>
       </div>
 
       <button>

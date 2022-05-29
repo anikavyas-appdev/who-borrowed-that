@@ -33,7 +33,20 @@ class BorrowersController < ApplicationController
     the_id = params.fetch("path_id")
     the_borrower = Borrower.where({ :id => the_id }).at(0)
 
-    the_borrower.name = params.fetch("query_name")
+    # the_borrower.name = params.fetch("query_name")
+    name = params.fetch("query_name")
+    matching_name = Borrower.where({ :name => name})
+
+    if matching_name.count == 0
+      matching_name = matching_name.at(0)
+      the_borrower.name = name
+    else 
+      the_borrower.name = matching_name.name 
+      matching_name = matching_name.at(0)
+      the_borrower.items.each do |an_item|
+        an_item.borrower_id = matching_name.id
+      end
+    end
 
     if the_borrower.valid?
       the_borrower.save

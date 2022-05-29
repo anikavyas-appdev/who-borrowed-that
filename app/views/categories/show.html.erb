@@ -18,6 +18,10 @@
       </div>
     </div>
 
+    <% if @the_category.items.count == 0%>
+      <p> No clothes under this category! </p>
+    <% else %>
+
   <div>
     <div>
       <table border="1">
@@ -87,11 +91,13 @@
 
 <hr>
 
+<% end %>
+
 
 <div>
   <div>
     <h2>
-      Edit category
+      Edit category name
     </h2>
 
     <form action="/modify_category/<%= @the_category.id %>"  method="post" >
