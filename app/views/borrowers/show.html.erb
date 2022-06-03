@@ -18,6 +18,10 @@
       </div>
     </div>
 
+  <% if @the_borrower.items.count == 0%>
+    <p> <%= @the_borrower.name%> borrowed no clothes! </p>
+  <% else %>
+
   <div>
   <div>
     <table border="1">
@@ -87,6 +91,8 @@
 </div>
 
 <hr>
+
+<% end %>
 
 
 <div>
